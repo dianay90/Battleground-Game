@@ -1,11 +1,12 @@
 
 /*********************************************************************
-** Program name: Project 3
+** Program name: Project 4
 ** Author: Diana Oh
-** Date: 5/14/2017
-** Description: This program utilizes polymorphism and inheritance to fight creatures in a battle class. A user is prompted a menu and is able to select two
-*creatures to fight. Some creatures have an inherent advantage over others due to their special abilities. The creature whose strength points diminish to zero first loses.
-*
+** Date: 5/28/2017
+** Description: This program utilizes polymorphism and inheritance to fight creatures in a team. The teams fight each other until members from only one team are left standing. 
+The winner gets the opportunity to play again, while the losers are taken to the loser stack. The program uses a loser stack to hold the losers and a queue to hold the team
+members in the current lineup. 
+
 *The program can be run using the makefile.
 **********************************************************************/
 
@@ -19,6 +20,7 @@ Vampire::Vampire()
 	this->defenseDieSides=6;
 	this->armor = 1;
 	this->strengthPoints = 18;
+	this->maxStrength = 18;
 	this->creatureName = "Vampire";
 	this->numberOfAttackDie = 1;
 	this->numberofDefenseDie = 1;

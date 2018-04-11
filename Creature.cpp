@@ -1,12 +1,12 @@
 
-
 /*********************************************************************
-** Program name: Project 3
+** Program name: Project 4
 ** Author: Diana Oh
-** Date: 5/14/2017
-** Description: This program utilizes polymorphism and inheritance to fight creatures in a battle class. A user is prompted a menu and is able to select two
-*creatures to fight. Some creatures have an inherent advantage over others due to their special abilities. The creature whose strength points diminish to zero first loses.
-*
+** Date: 5/28/2017
+** Description: This program utilizes polymorphism and inheritance to fight creatures in a team. The teams fight each other until members from only one team are left standing.
+The winner gets the opportunity to play again, while the losers are taken to the loser stack. The program uses a loser stack to hold the losers and a queue to hold the team
+members in the current lineup.
+
 *The program can be run using the makefile.
 **********************************************************************/
 
@@ -76,7 +76,9 @@ int Creature::defend()
  */
 void Creature::damageReceived(int attackRoll, int defenseRoll)
 {
-	int damage;
+	damage=0;
+
+	//this is the defender's damage
 	damage = attackRoll - defenseRoll - armor;
 
 
@@ -90,7 +92,10 @@ void Creature::damageReceived(int attackRoll, int defenseRoll)
 
 	if (damage>0)
 	{
+
+		// the new strengthpoints
 		strengthPoints = strengthPoints - damage;
+		
 
 	}
 
@@ -103,7 +108,7 @@ void Creature::damageReceived(int attackRoll, int defenseRoll)
 	}
 
 
-
+	
 
 }
 
@@ -117,22 +122,25 @@ string Creature::getName()
 
 // The set name function takes a number 1 or 2 as an argument. Depending on the number, the creature gets Player 1 or Player 2 in front of its name. 
 
-void Creature::setName(int number)
+
+
+void Creature::setName(string nickname, int num)
 {
+	if (num==1)
+
+	{
 	
-	if (number == 1)
-	{
-		creatureName = "Player 1 " + creatureName;
-
+		creatureName = "Team A " + creatureName + " " + nickname ;
+	
 	}
 
-	if (number ==2)
+	if (num==2)
+		
 	{
-		creatureName = "Player 2 " + creatureName;
-
+		creatureName = "Team B " + creatureName + " " + nickname ;
 	}
+
 }
-
 
 int Creature::getArmor()
 {
@@ -156,4 +164,14 @@ bool Creature::alive()
 		return true;
 
 	}
+}
+
+
+void Creature::restoreStrength()
+{
+	//strengthPoints = strengthPoints + (.70 * damage);
+	int damage1 = 0;
+	
+	damage1 = maxStrength - strengthPoints; 
+	strengthPoints = strengthPoints + (.5 * damage1);
 }

@@ -1,5 +1,4 @@
 
-
 /*********************************************************************
 ** Program name: Project 4
 ** Author: Diana Oh
@@ -11,39 +10,54 @@ members in the current lineup.
 *The program can be run using the makefile.
 **********************************************************************/
 
-
-/* This is my test driver function that allows two creatures to be selected to combat one another. *****This test driver design was approved by TA Ian.****** */
-
+/*
+*The Loser class is responsible for holding the losers of the game and displaying the losers on the screen.
+*
+*/
+#ifndef Loser_H
+#define Loser_H
 #include <iostream>
+using namespace std; 
+#include "inputValidation.h"
 #include "Creature.h"
-#include "Barbarian.h"
-#include "Medusa.h"
-#include "HarryPotter.h"
-#include "Vampire.h"
-#include "BlueMen.h"
-#include "Queue.h"
-#include "Loser.h"
-#include "Battleground.h"
-#include <cstdlib>
-#include <ctime>
 
-int main ()
+class Loser 
 
 
 {
+
+private:
+
+	struct LoserNode
+	{
+
+		Creature *creature; 
+		LoserNode*next;	
+		LoserNode*prev;
+		LoserNode(Creature* creature1)
+		{
+			//this->creature = creature;
+			creature = creature1; 
+
+		}
+
+	
+	};
+		
+	LoserNode *top;
+	LoserNode *bottom;
+	
+	//cout the head, tail, the previous, current and next pointers
+public: 
+	void addLoser(Creature* creature); 
+
+	void displayLoser(); 
+	Loser();  
+	~Loser();  
+	
 	
 
-
-	unsigned seed;
-	srand(time(NULL));
-
+};
+#endif
 
 
-	Battleground m; 
-	m.outerMenu(); 
-
-	
-
-
-	return 0; 
-}
