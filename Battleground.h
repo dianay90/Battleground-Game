@@ -41,10 +41,7 @@ private:
 	int teamBScore; 
 
 	Loser* lose;
-	//Loser lose; 
-	//Queue teamA; 
-	//Queue teamB; 
-	//Queue teamA;
+
 	
 	Queue* teamA;
 	//Queue teamB;
